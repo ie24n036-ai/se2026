@@ -13,6 +13,7 @@
 se2026/
 |-- README.md          このファイル
 |-- chia_sensei/       参考フォルダ
-`-- your_name/　       学生用 
+|-- week6/             第6週 共有作業フォルダ
+`-- your_name/　       学生フォルダ 
 ```
 
