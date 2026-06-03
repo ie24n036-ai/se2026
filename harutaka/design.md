@@ -15,11 +15,24 @@ python movie.py <サブコマンド> [引数]
 
 ### 実行サンプル
 
+python movie.py add タイタニック 恋愛 5
+追加しました
+
+python movie.py list
+
+タイトル,ジャンル,評価
+タイタニック,恋愛,5
+ターミネーター2,SF,5
+
 ## データ
 
 ### movie.csv
 
 映画情報をCSV形式で保存する。
+
+title,genre,rate
+タイタニック,恋愛,5
+ターミネーター2,SF,5
 
 ## 処理の流れ
 
