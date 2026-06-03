@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block title %}ログイン — TaskFlow{% endblock %}
+
+{% block extra_styles %}
+.login-wrap {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.login-left {
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-left::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 60%;
+    padding-bottom: 60%;
+    border-radius: 50%;
+    border: 60px solid rgba(200,75,47,0.15);
+}
+
+.login-left::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 40%;
+    padding-bottom: 40%;
+    border-radius: 50%;
+    border: 40px solid rgba(47,107,200,0.1);
+}
+
+.brand {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: white;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+}
+.brand span { color: var(--accent); }
+
+.login-tagline {
+    position: relative;
+    z-index: 1;
+}
+.login-tagline h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+.login-tagline p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.login-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: var(--paper);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-box h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+}
+.login-box .subtitle {
+    color: var(--muted);
+    font-size: 0.875rem;
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: white;
+    border: 1.5px solid var(--border);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+    border-color: var(--ink);
+}
+
+.btn-login {
+    width: 100%;
+    padding: 1rem;
+    background: var(--ink);
+    color: white;
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+.btn-login:hover { background: var(--accent); }
+
+.demo-hint {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: var(--cream);
+    border-left: 3px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+.demo-hint strong { color: var(--ink); }
+
+@media (max-width: 700px) {
+    .login-wrap { grid-template-columns: 1fr; }
+    .login-left { display: none; }
+}
+{% endblock %}
+
+{% block content %}
+<div class="login-wrap">
+    <div class="login-left">
+        <div class="brand">Task<span>Flow</span></div>
+        <div class="login-tagline">
+            <h1>課題を、<br>整理する。</h1>
+            <p>シンプルで使いやすい<br>課題管理アプリケーション</p>
+        </div>
+        <div style="color: var(--muted); font-size: 0.75rem; position:relative;z-index:1;">
+            © 2024 TaskFlow
+        </div>
+    </div>
+    <div class="login-right">
+        <div class="login-box">
+            <h2>ログイン</h2>
+            <p class="subtitle">アカウント情報を入力してください</p>
+            <form method="POST">
+                <div class="form-group">
+                    <label>ユーザー名</label>
+                    <input type="text" name="username" autocomplete="username" required>
+                </div>
+                <div class="form-group">
+                    <label>パスワード</label>
+                    <input type="password" name="password" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="btn-login">ログイン →</button>
+            </form>
+            <div class="demo-hint">
+                <strong>デモアカウント</strong><br>
+                ユーザー名: <strong>admin</strong> / パスワード: <strong>password</strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
