@@ -76,9 +76,17 @@ def create_order():
         )
         print(f"🛒 カートに「{product['name']} × {quantity}個」を追加しました！\n")
 
-        next_choice = input("さらに商品を追加しますか？ (y/n): ")
-        if next_choice.lower() != "y":
-            break
+        while True:
+            confirm = input("この注文を確定してよろしいですか？ (y/n): ").lower()
+
+            if confirm == "y":
+                # 注文確定
+                break
+            elif confirm == "n":
+                # キャンセル
+                break
+            else:
+                print("【エラー】y または n を入力してください。")
 
     # --- 4. 注文確認画面（今回の注文の合計） ---
     print("\n=== 📄 今回の注文内容の確認 ===")
@@ -95,23 +103,30 @@ def create_order():
     print(f"今回の小計: {current_total}円")
     print("==============================")
 
-    confirm = input("この注文を確定してよろしいですか？ (y/n): ")
-    if confirm.lower() == "y":
-        # 全体の合計金額にプラス
-        TOTAL_AMOUNT += current_total
+    while True:
+        confirm = input("この注文を確定してよろしいですか？ (y/n): ").lower()
 
-        order_time = datetime.now().strftime("%H:%M:%S")
-        ORDER_HISTORY.append(
-            {
-                "time": order_time,
-                "details": ", ".join(items_summary),
-                "total": current_total,
-            }
-        )
+        if confirm == "y":
+            TOTAL_AMOUNT += current_total
 
-        print("✅ 注文を確定しました！")
-    else:
-        print("❌ 注文をキャンセルしました。")
+            order_time = datetime.now().strftime("%H:%M:%S")
+            ORDER_HISTORY.append(
+                {
+                    "time": order_time,
+                    "details": ", ".join(items_summary),
+                    "total": current_total,
+                }
+            )
+
+            print("✅ 注文を確定しました！")
+            break
+
+        elif confirm == "n":
+            print("❌ 注文をキャンセルしました。")
+            break
+
+        else:
+            print("【エラー】y または n を入力してください。")
 
     input("\n[Enter]キーを押すとメニューに戻ります...")
 
