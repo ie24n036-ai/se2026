@@ -40,7 +40,13 @@ def search_book():
 
 
 def get_book_detail():
-    book_id = int(input("本ID: "))
+    book_id = input("本ID: ")
+
+    if not book_id.isdigit():
+        print("数字を入力してください")
+        return
+
+    book_id = int(book_id)
     books = load_books()
 
     for b in books:
